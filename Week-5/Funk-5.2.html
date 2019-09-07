@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Exercise 5.2 - The Proxy Pattern</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- jquery Reference Library -->
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-dark bg-dark">
+		<a href="#" class="navbar-brand">Home</a>
+	</nav>
+
+	<br /><br />
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+                <h2>Exercise 5.2 - The Proxy Pattern</h2>
+                
+                <button class="btn btn-primary" id="btnPreviewProxy">Preview Proxy</button>
+                
+                <br />
+                
+                <span id="spanProxyResults"></span>
+                
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(function() {
+			var about = {
+				firstName: "Karie",
+				lastName: "Funk",
+				cellPhone: "LG Stylo 4",
+                laptop: "Mac",
+                gamingSystem:"Nintendo Switch",
+				display: function() {
+					// Clear span tag before adding new content
+					$("#spanProxyResults").html("");
+					// Proxy results to span tag
+					$("#spanProxyResults").append("<br />Name: " + this.firstName + " " + this.lastName + "<br />Cell Phone Type: " + this.cellPhone + "<br />Laptop Type: " + this.laptop + "<br />Gaming System: " + this.gamingSystem);
+				}
+			};
+			// Created click event for button
+			$("#btnPreviewProxy").click($.proxy(about, "display"));
+		});
+    </script>
+    
+</body>
+
+</html>
