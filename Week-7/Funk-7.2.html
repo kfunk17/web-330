@@ -1,0 +1,86 @@
+<!--
+    Author: Richard Krasso
+    Modified by: Karie Funk
+    Date: Sept. 21, 2019
+    Assignment: 7.2 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Exercise 7.2</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+      integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+      crossorigin="anonymous"
+    />
+
+    <!-- JavaScript Libraries -->
+    <script
+      type="text/javascript"
+      src="https://gc.kis.v2.scr.kaspersky-labs.com/5DACB2B0-5003-6543-8B39-D8EE6E4FC44C/main.js"
+      charset="UTF-8"
+    ></script>
+    <script src="../knockout-<version>.js"></script>
+  </head>
+  <body>
+    <div role="main" class="container">
+
+        <br/><br/>
+        
+        <h2>Example 2</h2>
+
+        <div class="form-group">
+        <label for="txtFirstName">First Name: </label>
+        <input type="text" data-bind="value: firstName" class="form-control" id="txtFirstName"/>
+        </div>
+
+        <div data-bind="if: displayName">
+        <div class="form-group">
+        <label for="txtAuthor">Last Name: </label>
+        <input type="text" data-bind="value: lastName" class="form-control"
+       id="txtLastName"/>
+        </div>
+        </div>
+
+        <br/>
+
+        <div data-bind="if: fullName">
+            <div class="form-group">
+                <label for="txtFullName">Full Name:</label>
+        <h2><span class="alert-success" data-bind="text: fullName"></span></h2>
+        </div>
+        </div>
+
+        <br/>
+
+       </div>
+
+       <script>
+           //Created a PersonViewModel
+        function PersonViewModel() {
+            //Created Observables
+        this.firstName = ko.observable("");
+        this.lastName = ko.observable("");
+            //Created a function to return the firstName
+        this.displayFirstName = ko.pureComputed(function () {
+        return this.firstName();
+        }, this);
+            //Created a function to return fullName
+        this.displayFullName = ko.pureComputed(function () {
+        return this.firstName() + "  " + this.lastName();
+        }, this);
+        }
+           //Created binding 
+        ko.applyBindings(new PersonViewModel());
+       </script>
+  </body>
+</html>
