@@ -18,7 +18,7 @@ console.log("");
 
 //START PROGRAM
 
-//Variable named DatabaseSingleton created with function inside named createInstance that holds return statement 
+//Variable named DatabaseSingleton created with function inside named createInstance as well as a return statement 
 var DatabaseSingleton = (function() {
     var instance;
     function createInstance() {
